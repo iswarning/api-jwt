@@ -249,7 +249,7 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `enabled`) VALU
 (2, 'alex', NULL, '$2a$10$.tP2OH3dEG0zms7vek4ated5AiQ.EGkncii0OpCcGq4bckS9NOULu', 1),
 (3, 'john', NULL, '$2a$10$E2UPv7arXmp3q0LzVzCBNeb4B4AtbTAGjkefVDnSztOwE7Gix6kea', 1),
 (4, 'namhm', NULL, '$2a$10$GQT8bfLMaLYwlyUysnGwDu6HMB5G.tin5MKT/uduv2Nez0.DmhnOq', 1),
-(5, 'admin', NULL, '$2a$10$75qEhDgmIBLTnwGik9uD4OCrDFs85I20XhXne8j37HjQJVnA0C6bC', 1);
+(5, 'admin1', NULL, '$2a$10$75qEhDgmIBLTnwGik9uD4OCrDFs85I20XhXne8j37HjQJVnA0C6bC', 1);
 
 -- --------------------------------------------------------
 

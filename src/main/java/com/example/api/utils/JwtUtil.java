@@ -1,24 +1,26 @@
 package com.example.api.utils;
 
 import com.example.api.config.MyUserDetails;
+import com.example.api.filter.JwtFilter;
 import io.jsonwebtoken.*;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-@Slf4j
 public class JwtUtil {
 
-    private String jwtSecret = "secretKey";
+    Logger log = LoggerFactory.getLogger(JwtUtil.class);
 
-    private final int jwtExpiration = 86400000;
+    private final String jwtSecret = "secretKey";
 
     public String generateToken(Authentication auth){
 
         MyUserDetails userPrincipal = (MyUserDetails) auth.getPrincipal();
 
+        int jwtExpiration = 86400000;
         return Jwts.builder()
                 .setSubject(userPrincipal.getUsername())
                 .setIssuedAt(new Date())

@@ -1,22 +1,26 @@
 package com.example.api.services;
 
 import com.example.api.entities.Customer;
+import com.example.api.repositories.ContractRepository;
 import com.example.api.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private ContractRepository contractRepository;
 
     @Override
     public List<Customer> getAllCustomers() {
@@ -51,6 +55,12 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public void deleteCustomer(int id) {
-        customerRepository.deleteById(id);
+        Customer customer = null;
+        Optional<Customer> optionalCustomer = customerRepository.findById(id);
+        if(optionalCustomer.isPresent()) {
+            customer = optionalCustomer.get();
+        }
+        assert customer != null;
+        customerRepository.delete(customer);
     }
 }

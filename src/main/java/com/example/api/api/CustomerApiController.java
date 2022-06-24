@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @PreAuthorize("hasRole('ADMIN')")
 @RequestMapping("api/customers")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class CustomerApiController {
 
     @Autowired

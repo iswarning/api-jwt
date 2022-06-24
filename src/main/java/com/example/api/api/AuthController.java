@@ -28,9 +28,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "*",maxAge = 3600)
 public class AuthController {
 
     @Autowired
@@ -44,6 +44,11 @@ public class AuthController {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @GetMapping("/test")
+    public ResponseEntity<?> test() {
+        return ResponseEntity.ok("OK");
+    }
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest) {
